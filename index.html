@@ -57,7 +57,7 @@
   <div id="toast-container" class="fixed top-4 right-4 z-[9999] flex flex-col gap-2"></div>
   <div id="app" class="h-full w-full overflow-auto"></div>
   <script>
-    // Local Storage এ ডেটা সংরক্ষণ করা হব��
+    // Local Storage এ ডেটা সংরক্ষণ করা হবে।
     const STORAGE_KEY = 'diganta_books';
     const ORDERS_KEY = 'diganta_orders';
     const VIDEOS_KEY = 'diganta_videos';
@@ -301,7 +301,7 @@
                     <h3 class="text-xl font-bold mb-2">বইয়ে��� ��্রিভিউ</h3>
                     ${book.preview_pdf ? `
                       <button onclick="showPdfViewer('${book.preview_pdf}')" class="px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 font-semibold mb-3">
-                        📖 প্রিভিউ PDF দেখ���ন
+                        📖 প্রিভিউ PDF দেখুন
                       </button>
                     ` : ''}
                     ${previewPages.length > 0 ? `
