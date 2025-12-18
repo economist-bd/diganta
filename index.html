@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diganta - ই-বুক স্টোর</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     body {
       box-sizing: border-box;
-      font-family: 'Noto Sans Bengali', 'Hind Siliguri', Arial, sans-serif;
+      font-family: 'Hind Siliguri', 'Noto Sans Bengali', 'SolaimanLipi', Arial, sans-serif;
     }
     
     * {
-      font-family: 'Noto Sans Bengali', 'Hind Siliguri', Arial, sans-serif;
+      font-family: 'Hind Siliguri', 'Noto Sans Bengali', 'SolaimanLipi', Arial, sans-serif;
     }
     
     .book-card {
@@ -57,7 +57,7 @@
   <div id="toast-container" class="fixed top-4 right-4 z-[9999] flex flex-col gap-2"></div>
   <div id="app" class="h-full w-full overflow-auto"></div>
   <script>
-    // Local Storage এ ডেটা সংরক্ষণ করা হবে।
+    // Local Storage এ ডেটা সংরক্ষণ করা হব��
     const STORAGE_KEY = 'diganta_books';
     const ORDERS_KEY = 'diganta_orders';
     const VIDEOS_KEY = 'diganta_videos';
@@ -175,7 +175,7 @@
           <h2 class="text-3xl font-bold mb-6 text-center" style="color: ${storeConfig.primary_color};">অর্ডার করুন</h2>
           <form id="orderForm">
             <div class="mb-4">
-              <label class="block text-sm font-semibold mb-2">বইয়ের নাম</label>
+              <label class="block text-sm font-semibold mb-2">বইয়ে�� নাম</label>
               <input type="text" value="${escapeHtml(book.title)}" disabled class="w-full px-4 py-3 border-2 rounded-lg bg-gray-100">
             </div>
             <div class="mb-4">
@@ -196,7 +196,7 @@
             </div>
             <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 mb-6">
               <p class="text-sm font-semibold text-blue-800">💰 ক্যাশ অন ডে��িভারি</p>
-              <p class="text-xs text-blue-600 mt-1">পণ্য হাতে পেয়ে টাকা পরিশোধ করুন</p>
+              <p class="text-xs text-blue-600 mt-1">পণ্য হাতে প��য়ে টাকা পরিশোধ করুন</p>
             </div>
             <div class="flex gap-3">
               <button type="button" id="cancelBtn" class="flex-1 px-6 py-3 border-2 rounded-lg font-semibold hover:bg-gray-100">বাতিল</button>
@@ -239,7 +239,7 @@
         orders.push(newOrder);
         saveOrders(orders);
         
-        showToast('অর্ডার সফলভাবে সম্পন্ন হয়েছে! শীঘ্রই আমরা আপনার সাথে যোগাযোগ করব।', 'success');
+        showToast('অর্ডার সফলভাবে সম্পন্ন হয়েছে! শীঘ্রই আমরা ��পনার সাথে য��গাযোগ করব।', 'success');
         modal.remove();
         renderApp();
       };
@@ -301,7 +301,7 @@
                     <h3 class="text-xl font-bold mb-2">বইয়ে��� ��্রিভিউ</h3>
                     ${book.preview_pdf ? `
                       <button onclick="showPdfViewer('${book.preview_pdf}')" class="px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 font-semibold mb-3">
-                        📖 প্রিভিউ PDF দেখুন
+                        📖 প্রিভিউ PDF দেখ���ন
                       </button>
                     ` : ''}
                     ${previewPages.length > 0 ? `
@@ -326,7 +326,7 @@
                 ` : ''}
                 
                 <button id="orderNowBtn" class="w-full py-4 rounded-xl text-white text-xl font-bold btn-primary shadow-lg" style="background-color: ${storeConfig.primary_color};">
-                  🛒 এখনই অর্ডার করুন
+                  �� ��খনই অর্ডার করুন
                 </button>
               </div>
             </div>
@@ -418,7 +418,7 @@
           <div class="max-w-7xl mx-auto text-center">
             <p class="text-xl font-semibold mb-2">${storeConfig.store_name}</p>
             <p>📞 ${storeConfig.store_phone} | 📧 ${storeConfig.store_email}</p>
-            <p class="mt-4 text-sm opacity-75">© 2024 ${storeConfig.store_name}. স��্বস্বত্ব সংরক্ষিত।</p>
+            <p class="mt-4 text-sm opacity-75">© 2024 ${storeConfig.store_name}. স��্বস্বত্ব সংরক্ষ��ত।</p>
           </div>
         </footer>
       `;
@@ -551,7 +551,7 @@
                   বই স্টোর
                 </button>
                 <button onclick="currentView='videos'; renderApp();" class="px-4 py-2 bg-red-500 text-white rounded-lg font-semibold">
-                  ভিডিও ক্লাস
+                  ��িডিও ক্লাস
                 </button>
                 <button onclick="isLoggedIn=false; currentView='admin'; renderApp();" class="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold">
                   Logout
@@ -623,7 +623,7 @@
             
             <div class="rounded-xl shadow-lg p-6 mb-8 bg-white">
               <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
-                <h2 class="text-2xl font-bold" style="color: ${storeConfig.text_color};">ভিডিও ম্যানেজমেন্ট</h2>
+                <h2 class="text-2xl font-bold" style="color: ${storeConfig.text_color};">ভিডিও ��্যানেজমেন্ট</h2>
                 <button onclick="showAddVideoForm()" class="px-6 py-3 rounded-lg text-white font-semibold btn-primary bg-red-500 hover:bg-red-600">
                   + নতুন ভিডিও যুক্ত করুন
                 </button>
@@ -702,7 +702,7 @@
                               <option value="পেন্ডিং">পেন্ডিং</option>
                               <option value="প্রসেসিং">প্রসেসিং</option>
                               <option value="এপ্রুভড">এপ্রুভড</option>
-                              <option value="ক্যান্সেল">ক্যান্সেল</option>
+                              <option value="ক্যান্সেল">ক��যান্সেল</option>
                             </select>
                           </td>
                         </tr>
@@ -725,7 +725,7 @@
                       <tr>
                         <th class="text-left py-3 px-2">তারিখ</th>
                         <th class="text-left py-3 px-2">��্রাহকের নাম</th>
-                        <th class="text-left py-3 px-2">���োবাই���</th>
+                        <th class="text-left py-3 px-2">�����বাই���</th>
                         <th class="text-left py-3 px-2">বই</th>
                         <th class="text-left py-3 px-2">মূল্য</th>
                         <th class="text-left py-3 px-2">ঠিকানা</th>
@@ -765,7 +765,7 @@
                               <option value="পেন্ডি���">পেন্ডিং</option>
                               <option value="প্রসেসিং">প্রসেসিং</option>
                               <option value="ডেলিভারড">ডেলিভারড</option>
-                              <option value="ক্যান্সেল">ক্য��ন্সে���</option>
+                              <option value="ক্যান্সেল">ক্য����্সে���</option>
                             </select>
                           </td>
                         </tr>
@@ -842,8 +842,9 @@
               </div>
               
               <div>
-                <label class="block text-sm font-semibold mb-2">ভিডিও ফাইল URL *</label>
-                <input type="url" id="videoUrl" value="${video?.video_url || ''}" required placeholder="https://example.com/video.mp4" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-red-500">
+                <label class="block text-sm font-semibold mb-2">ভিডিও URL * (ইউটিউব লিঙ্ক বা সরাসরি ভিডিও ফাইল)</label>
+                <input type="url" id="videoUrl" value="${video?.video_url || ''}" required placeholder="https://youtube.com/shorts/... অথবা https://example.com/video.mp4" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-red-500">
+                <p class="text-xs text-gray-500 mt-1">ইউটিউব শর্টস বা সাধারণ ভিডিও লিঙ্ক দিতে পারেন</p>
               </div>
               
               <div class="flex gap-3 pt-4">
@@ -978,7 +979,7 @@
             
             <form id="bookForm" class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold mb-2">বইয়ের নাম *</label>
+                <label class="block text-sm font-semibold mb-2">বইয়ের ন��ম *</label>
                 <input type="text" id="bookTitle" value="${book?.title || ''}" required class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-green-500">
               </div>
               
@@ -1087,7 +1088,7 @@
         }
         
         saveBooks(books);
-        showToast(book ? 'বই সফলভাবে আপডেট হয়েছে' : 'নতুন বই যুক্ত হয়েছ���', 'success');
+        showToast(book ? 'বই সফলভাবে আপডেট হয়েছে' : 'নতু��� বই যুক্ত হয়েছ�����', 'success');
         modal.remove();
         renderApp();
       };
@@ -1154,7 +1155,7 @@
           </button>
           <div class="text-center">
             <img src="${imageUrl}" alt="Page ${pageNumber}" class="max-w-full max-h-screen object-contain rounded-lg shadow-2xl">
-            <p class="text-white text-lg mt-4 font-semibold">পেজ ${pageNumber}</p>
+            <p class="text-white text-lg mt-4 font-semibold">���েজ ${pageNumber}</p>
           </div>
         </div>
       `;
@@ -1273,7 +1274,7 @@
               <input type="tel" id="customerMobile" required pattern="[0-9]{11}" placeholder="01XXXXXXXXX" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-red-500">
             </div>
             <div class="mb-6">
-              <label class="block text-sm font-semibold mb-2">সম্পূর্ণ ঠিকানা *</label>
+              <label class="block text-sm font-semibold mb-2">সম্পূর্ণ ঠিক���না *</label>
               <textarea id="customerAddress" required rows="3" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-red-500"></textarea>
             </div>
             <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 mb-6">
@@ -1342,7 +1343,7 @@
       
       modal.innerHTML = `
         <div class="rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8" style="background-color: ${storeConfig.card_color};">
-          <h2 class="text-3xl font-bold mb-6 text-center text-red-500">🔐 মোবাইল ভেরিফিকেশন</h2>
+          <h2 class="text-3xl font-bold mb-6 text-center text-red-500">��� মোবাইল ভেরিফিকেশন</h2>
           <p class="text-gray-700 mb-6 text-center">অর্ডার করার সময় যে মোবাইল নম্বর দিয়েছিলেন, সেটি দিন</p>
           <form id="verifyVideoForm">
             <div class="mb-6">
@@ -1351,7 +1352,7 @@
             </div>
             <div class="flex gap-3">
               <button type="button" id="cancelVerifyBtn" class="flex-1 px-6 py-3 border-2 rounded-lg font-semibold hover:bg-gray-100">বাতিল</button>
-              <button type="submit" class="flex-1 px-6 py-3 rounded-lg font-semibold text-white btn-primary bg-red-500 hover:bg-red-600">যাচাই করুন</button>
+              <button type="submit" class="flex-1 px-6 py-3 rounded-lg font-semibold text-white btn-primary bg-red-500 hover:bg-red-600">যাচ���ই করুন</button>
             </div>
           </form>
         </div>
@@ -1399,27 +1400,85 @@
       };
     }
     
+    function getYouTubeEmbedUrl(url) {
+      // YouTube video ID extract করা
+      let videoId = null;
+      
+      // YouTube Shorts URL (https://youtube.com/shorts/VIDEO_ID)
+      if (url.includes('youtube.com/shorts/') || url.includes('youtu.be/shorts/')) {
+        const match = url.match(/shorts\/([a-zA-Z0-9_-]+)/);
+        if (match) videoId = match[1];
+      }
+      // Regular YouTube URL (https://www.youtube.com/watch?v=VIDEO_ID)
+      else if (url.includes('youtube.com/watch')) {
+        const urlParams = new URLSearchParams(new URL(url).search);
+        videoId = urlParams.get('v');
+      }
+      // Short YouTube URL (https://youtu.be/VIDEO_ID)
+      else if (url.includes('youtu.be/')) {
+        const match = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+        if (match) videoId = match[1];
+      }
+      
+      // যদি YouTube video ID পাওয়া যায়
+      if (videoId) {
+        // rel=0 দিয়ে সম্পর্কিত ভিডিও বন্ধ, modestbranding দিয়ে YouTube logo কমানো
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      }
+      
+      return null;
+    }
+    
     function playVideoModal(videoUrl) {
       const modal = document.createElement('div');
       modal.className = 'fixed inset-0 z-50 modal-backdrop';
       modal.style.backgroundColor = 'rgba(0,0,0,0.95)';
       
-      modal.innerHTML = `
-        <div class="w-full h-full flex flex-col">
-          <div class="flex justify-between items-center p-4 bg-black bg-opacity-50">
-            <h3 class="text-white text-xl font-bold">🎥 ভিডিও প্লেয়ার</h3>
-            <button onclick="this.closest('.modal-backdrop').remove()" class="text-white text-3xl font-bold hover:text-red-500">
-              ✕
-            </button>
+      // Check if it's a YouTube URL
+      const youtubeEmbedUrl = getYouTubeEmbedUrl(videoUrl);
+      
+      if (youtubeEmbedUrl) {
+        // YouTube Embed Player
+        modal.innerHTML = `
+          <div class="w-full h-full flex flex-col">
+            <div class="flex justify-between items-center p-4 bg-black bg-opacity-50">
+              <h3 class="text-white text-xl font-bold">🎥 ভিডিও প্লেয়ার</h3>
+              <button onclick="this.closest('.modal-backdrop').remove()" class="text-white text-3xl font-bold hover:text-red-500">
+                ✕
+              </button>
+            </div>
+            <div class="flex-1 flex items-center justify-center p-4">
+              <div class="w-full max-w-4xl aspect-video">
+                <iframe 
+                  src="${youtubeEmbedUrl}" 
+                  class="w-full h-full rounded-lg shadow-2xl" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
           </div>
-          <div class="flex-1 flex items-center justify-center p-4">
-            <video controls autoplay class="max-w-full max-h-full rounded-lg shadow-2xl" style="max-height: 85vh;">
-              <source src="${videoUrl}" type="video/mp4">
-              আপনার ব্রাউজার ভিডিও প্লেব্যাক সাপোর্ট করে না।
-            </video>
+        `;
+      } else {
+        // Regular Video Player
+        modal.innerHTML = `
+          <div class="w-full h-full flex flex-col">
+            <div class="flex justify-between items-center p-4 bg-black bg-opacity-50">
+              <h3 class="text-white text-xl font-bold">🎥 ভিডিও প্লেয়ার</h3>
+              <button onclick="this.closest('.modal-backdrop').remove()" class="text-white text-3xl font-bold hover:text-red-500">
+                ✕
+              </button>
+            </div>
+            <div class="flex-1 flex items-center justify-center p-4">
+              <video controls autoplay class="max-w-full max-h-full rounded-lg shadow-2xl" style="max-height: 85vh;">
+                <source src="${videoUrl}" type="video/mp4">
+                আপনার ব্রা���জার ভিডিও প্লেব্যাক সাপোর্ট করে না।
+              </video>
+            </div>
           </div>
-        </div>
-      `;
+        `;
+      }
       
       document.body.appendChild(modal);
     }
@@ -1511,7 +1570,7 @@
       modal.innerHTML = `
         <div class="rounded-2xl shadow-2xl max-w-md w-full mx-4 p-8" style="background-color: ${storeConfig.card_color};">
           <h2 class="text-3xl font-bold mb-6 text-center" style="color: ${storeConfig.primary_color};">🔐 মোবাইল ভেরিফিকেশন</h2>
-          <p class="text-gray-700 mb-6 text-center">অর্ডার করার সময় যে মোবাইল নম্বর দিয়েছিল��ন, সেটি দিন</p>
+          <p class="text-gray-700 mb-6 text-center">অর্ডার করার সময় যে মোবাইল নম্বর দিয়েছিল��ন, সেট��� দিন</p>
           <form id="verifyForm">
             <div class="mb-6">
               <label class="block text-sm font-semibold mb-2">মোবাইল নম্বর *</label>
@@ -1561,7 +1620,7 @@
           showToast('ভেরিফিকেশন সফল!', 'success');
           callback(true);
         } else {
-          showToast('এই নম্বর দিয়ে কোনো ডেলিভারড অর্ডার পা��য়া যায়নি', 'error');
+          showToast('এই নম্বর দিয়ে ক��নো ডেলিভারড অর্ডার পা����়া যায়নি', 'error');
           callback(false);
         }
       };
@@ -1586,5 +1645,5 @@
     
     renderApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afec3d863364ea6',t:'MTc2NjA2MjAwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afee438f5da4e9d',t:'MTc2NjA2MzMzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
