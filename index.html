@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diganta - ই-বুক স্টোর</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     body {
       box-sizing: border-box;
-      font-family: 'Hind Siliguri', sans-serif;
+      font-family: 'Noto Sans Bengali', 'Hind Siliguri', Arial, sans-serif;
+    }
+    
+    * {
+      font-family: 'Noto Sans Bengali', 'Hind Siliguri', Arial, sans-serif;
     }
     
     .book-card {
@@ -53,7 +57,7 @@
   <div id="app" class="h-full w-full overflow-auto"></div>
   <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2"></div>
   <script>
-    // Local Storage এ ডেটা সংরক্ষণ করা হব��
+    // Local Storage এ ডেটা সংরক্ষণ করা হবে
     const STORAGE_KEY = 'diganta_books';
     const ORDERS_KEY = 'diganta_orders';
     
@@ -61,7 +65,7 @@
       store_name: "Diganta",
       store_phone: "01715247588",
       store_email: "eco452@gmail.com",
-      banner_title: "জ্ঞানের ভ��ন্ডার আপনার হাতের মুঠোয়",
+      banner_title: "জ্ঞানের ভান্ডার আপনার হাতের মুঠোয়",
       banner_subtitle: "সেরা বাংলা ই-বুক কালেকশন",
       primary_color: "#10b981",
       secondary_color: "#ffffff",
@@ -171,7 +175,7 @@
               <textarea id="customerAddress" required rows="3" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-green-500"></textarea>
             </div>
             <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 mb-6">
-              <p class="text-sm font-semibold text-blue-800">💰 ক্যাশ অন ডেলিভা��ি</p>
+              <p class="text-sm font-semibold text-blue-800">💰 ক্যাশ অন ডেলিভারি</p>
               <p class="text-xs text-blue-600 mt-1">পণ্য হাতে পেয়ে টাকা পরিশোধ করুন</p>
             </div>
             <div class="flex gap-3">
@@ -195,7 +199,7 @@
         const address = document.getElementById('customerAddress').value.trim();
         
         if (!name || !mobile || !address) {
-          showToast('সকল তথ্য পূর��� করুন', 'error');
+          showToast('সকল তথ্য পূরণ করুন', 'error');
           return;
         }
         
@@ -388,7 +392,7 @@
           <div class="max-w-7xl mx-auto text-center">
             <p class="text-xl font-semibold mb-2">${storeConfig.store_name}</p>
             <p>📞 ${storeConfig.store_phone} | 📧 ${storeConfig.store_email}</p>
-            <p class="mt-4 text-sm opacity-75">© 2024 ${storeConfig.store_name}. সর্বস্বত্ব সংরক্ষিত।</p>
+            <p class="mt-4 text-sm opacity-75">© 2024 ${storeConfig.store_name}. স��্বস্বত্ব সংরক্ষিত।</p>
           </div>
         </footer>
       `;
@@ -503,7 +507,7 @@
                   <table class="w-full text-sm">
                     <thead class="border-b-2">
                       <tr>
-                        <th class="text-left py-3 px-2">তার��খ</th>
+                        <th class="text-left py-3 px-2">তারিখ</th>
                         <th class="text-left py-3 px-2">গ্রাহকের নাম</th>
                         <th class="text-left py-3 px-2">মোবাইল</th>
                         <th class="text-left py-3 px-2">বই</th>
@@ -586,7 +590,7 @@
             
             <form id="bookForm" class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold mb-2">ব���য়ের নাম *</label>
+                <label class="block text-sm font-semibold mb-2">বইয়ের নাম *</label>
                 <input type="text" id="bookTitle" value="${book?.title || ''}" required class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-green-500">
               </div>
               
@@ -695,7 +699,7 @@
         }
         
         saveBooks(books);
-        showToast(book ? 'বই সফলভাবে আপডেট ��য়েছে' : 'নতুন বই যুক্ত হয়েছে', 'success');
+        showToast(book ? 'বই সফলভাবে আপডেট হয়েছে' : 'নতুন বই যুক্ত হয়েছে', 'success');
         modal.remove();
         renderApp();
       };
@@ -835,5 +839,5 @@
     
     renderApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afe565b874a4ea6',t:'MTc2NjA1NzUyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afe6829e6964ea6',t:'MTc2NjA1ODI1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
