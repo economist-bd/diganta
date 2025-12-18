@@ -53,7 +53,7 @@
   <div id="app" class="h-full w-full overflow-auto"></div>
   <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2"></div>
   <script>
-    // Local Storage এ ডেটা সংরক্ষণ করা হবে
+    // Local Storage এ ডেটা সংরক্ষণ করা হব��
     const STORAGE_KEY = 'diganta_books';
     const ORDERS_KEY = 'diganta_orders';
     
@@ -272,21 +272,28 @@
                   <div class="text-gray-700 leading-relaxed max-h-60 overflow-y-auto border-2 border-gray-200 rounded-lg p-4" style="white-space: pre-wrap;">${escapeHtml(book.description)}</div>
                 </div>
                 
-                ${previewPages.length > 0 ? `
+                ${book.preview_pdf || previewPages.length > 0 ? `
                   <div class="mb-6">
-                    <h3 class="text-xl font-bold mb-2">প্রিভিউ পেজ</h3>
-                    <div class="flex gap-2 overflow-x-auto">
-                      ${previewPages.map((page, idx) => `
-                        <img src="${page}" alt="Page ${idx+1}" class="w-32 h-40 object-cover rounded-lg shadow cursor-pointer hover:scale-105 transition-transform" onclick="showFullPagePreview('${page}', ${idx+1})">
-                      `).join('')}
-                    </div>
+                    <h3 class="text-xl font-bold mb-2">বইয়ের প্রিভিউ</h3>
+                    ${book.preview_pdf ? `
+                      <button onclick="showPdfViewer('${book.preview_pdf}')" class="px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 font-semibold mb-3">
+                        📖 প্রিভিউ PDF দেখুন
+                      </button>
+                    ` : ''}
+                    ${previewPages.length > 0 ? `
+                      <div class="flex gap-2 overflow-x-auto">
+                        ${previewPages.map((page, idx) => `
+                          <img src="${page}" alt="Page ${idx+1}" class="w-32 h-40 object-cover rounded-lg shadow cursor-pointer hover:scale-105 transition-transform" onclick="showFullPagePreview('${page}', ${idx+1})">
+                        `).join('')}
+                      </div>
+                    ` : ''}
                   </div>
                 ` : ''}
                 
                 ${book.pdf_url ? `
                   <div class="mb-4">
                     <button onclick="showPdfViewer('${book.pdf_url}')" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-semibold">
-                      📄 PDF প্রিভিউ দেখুন
+                      📄 সম্পূর্ণ PDF দেখুন
                     </button>
                     <a href="${book.pdf_url}" target="_blank" rel="noopener noreferrer" class="ml-2 px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 inline-block font-semibold">
                       ⬇️ ডাউনলোড করুন
@@ -496,7 +503,7 @@
                   <table class="w-full text-sm">
                     <thead class="border-b-2">
                       <tr>
-                        <th class="text-left py-3 px-2">তারিখ</th>
+                        <th class="text-left py-3 px-2">তার��খ</th>
                         <th class="text-left py-3 px-2">গ্রাহকের নাম</th>
                         <th class="text-left py-3 px-2">মোবাইল</th>
                         <th class="text-left py-3 px-2">বই</th>
@@ -507,12 +514,24 @@
                       </tr>
                     </thead>
                     <tbody>
-                      ${orders.map(order => `
+                      ${orders.map(order => {
+                        const book = books.find(b => b.id === order.book_id);
+                        const hasPdf = book && book.pdf_url;
+                        const isDelivered = order.order_status === 'ডেলিভারড';
+                        
+                        return `
                         <tr class="border-b hover:bg-gray-50">
                           <td class="py-3 px-2">${new Date(order.order_date).toLocaleDateString('bn-BD')}</td>
                           <td class="py-3 px-2 font-semibold">${escapeHtml(order.customer_name)}</td>
                           <td class="py-3 px-2">${order.customer_mobile}</td>
-                          <td class="py-3 px-2">${escapeHtml(order.book_title)}</td>
+                          <td class="py-3 px-2">
+                            ${escapeHtml(order.book_title)}
+                            ${isDelivered && hasPdf ? `
+                              <br><a href="${book.pdf_url}" download class="inline-flex items-center gap-1 mt-1 px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">
+                                ⬇️ ডাউনলোড
+                              </a>
+                            ` : ''}
+                          </td>
                           <td class="py-3 px-2">৳${order.book_price}</td>
                           <td class="py-3 px-2 max-w-xs truncate">${escapeHtml(order.customer_address)}</td>
                           <td class="py-3 px-2">
@@ -530,7 +549,8 @@
                             </select>
                           </td>
                         </tr>
-                      `).join('')}
+                        `;
+                      }).join('')}
                     </tbody>
                   </table>
                 </div>
@@ -602,12 +622,17 @@
               </div>
               
               <div>
-                <label class="block text-sm font-semibold mb-2">PDF লিঙ্ক</label>
+                <label class="block text-sm font-semibold mb-2">PDF লিঙ্ক (পুরো বই)</label>
                 <input type="url" id="bookPdfUrl" value="${book?.pdf_url || ''}" placeholder="https://example.com/book.pdf" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-green-500">
               </div>
               
               <div>
-                <label class="block text-sm font-semibold mb-2">প্রিভিউ পেজ URLs (প্রতিটি লাইনে একটি)</label>
+                <label class="block text-sm font-semibold mb-2">প্রিভিউ PDF লিঙ্ক (নমুনা পেজ)</label>
+                <input type="url" id="bookPreviewPdf" value="${book?.preview_pdf || ''}" placeholder="https://example.com/preview.pdf" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-green-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-semibold mb-2">প্রিভিউ পেজ ইমেজ URLs (প্রতিটি লাইনে একটি)</label>
                 <textarea id="bookPreviewPages" rows="3" placeholder="https://example.com/page1.jpg&#10;https://example.com/page2.jpg" class="w-full px-4 py-3 border-2 rounded-lg focus:outline-none focus:border-green-500">${book?.preview_pages ? book.preview_pages.join('\n') : ''}</textarea>
               </div>
               
@@ -639,6 +664,7 @@
         const coverUrl = document.getElementById('bookCoverUrl').value.trim();
         const imagesText = document.getElementById('bookImages').value.trim();
         const pdfUrl = document.getElementById('bookPdfUrl').value.trim();
+        const previewPdf = document.getElementById('bookPreviewPdf').value.trim();
         const previewPagesText = document.getElementById('bookPreviewPages').value.trim();
         
         const images = imagesText ? imagesText.split('\n').filter(url => url.trim()) : [];
@@ -656,6 +682,7 @@
           cover_url: coverUrl,
           images,
           pdf_url: pdfUrl,
+          preview_pdf: previewPdf,
           preview_pages: previewPages,
           created_at: book?.created_at || new Date().toISOString()
         };
@@ -808,5 +835,5 @@
     
     renderApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afe4644c4fd4ea6',t:'MTc2NjA1Njg2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afe565b874a4ea6',t:'MTc2NjA1NzUyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
